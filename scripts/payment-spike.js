@@ -1,13 +1,13 @@
 import { sleep } from 'k6';
 import { spikeScenario } from '../config/scenarios/spike.js';
-import { paymentThresholds } from '../config/thresholds/payment.thresholds.js';
+import { spikeThresholds } from '../config/thresholds/spike.thresholds.js';
 import { buildPaymentPayload } from '../src/data/paymentPayloadFactory.js';
 import { createPayment } from '../src/clients/paymentApiClient.js';
 import { validatePaymentResponse } from '../src/checks/paymentChecks.js';
 
 export const options = {
   stages: spikeScenario.stages,
-  thresholds: paymentThresholds,
+  thresholds: spikeThresholds,
 };
 
 export default function () {

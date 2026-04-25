@@ -1,13 +1,13 @@
 import { sleep } from 'k6';
 import { stressScenario } from '../config/scenarios/stress.js';
-import { paymentThresholds } from '../config/thresholds/payment.thresholds.js';
+import { stressThresholds } from '../config/thresholds/stress.thresholds.js';
 import { buildPaymentPayload } from '../src/data/paymentPayloadFactory.js';
 import { createPayment } from '../src/clients/paymentApiClient.js';
 import { validatePaymentResponse } from '../src/checks/paymentChecks.js';
 
 export const options = {
   stages: stressScenario.stages,
-  thresholds: paymentThresholds,
+  thresholds: stressThresholds,
 };
 
 export default function () {
