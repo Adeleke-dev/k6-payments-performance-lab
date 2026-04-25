@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:smoke": "k6 run scripts/payment-smoke.js",
-    "test:load": "k6 run scripts/payment-load.js",
-    "test:spike": "k6 run scripts/payment-spike.js",
-    "test:stress": "k6 run scripts/payment-stress.js",
+    "test:smoke": "k6 run --out json=results/json/smoke.json scripts/payment-smoke.js",
+    "test:load": "k6 run --out json=results/json/load.json scripts/payment-load.js",
+    "test:spike": "k6 run --out json=results/json/spike.json scripts/payment-spike.js",
+    "test:stress": "k6 run --out json=results/json/stress.json scripts/payment-stress.js",
     "start": "node mock-services/payment-api/server.js"
   },
   "keywords": [],
