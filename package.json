@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:smoke": "k6 run scripts/payment-smoke.js",
+    "test:load": "k6 run scripts/payment-load.js",
+    "test:spike": "k6 run scripts/payment-spike.js",
+    "test:stress": "k6 run scripts/payment-stress.js",
+    "start": "node mock-services/payment-api/server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
