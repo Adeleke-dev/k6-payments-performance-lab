@@ -38,3 +38,9 @@ This indicates that the service can remain responsive while still failing too ma
 During the spike test, traffic increased up to 20 virtual users. The payment API maintained stable response times, with p95 latency at 437.01 ms, which stayed within the configured latency threshold.
 
 However, the failed request rate reached 6.23%, breaching the reliability threshold of less than 1%. This shows that the service remained responsive during sudden traffic increases, but payment creation reliability was still unacceptable for a payment workflow.
+
+## Stress traffic reliability finding
+
+During the stress test, traffic increased up to 50 virtual users and completed 2045 requests. The payment API maintained stable response times, with p95 latency at 433.9 ms, staying within the configured latency threshold.
+
+However, the failed request rate reached 5.47%, breaching the reliability threshold of less than 1%. This indicates that even when latency remains acceptable, payment reliability can still be unacceptable under higher traffic levels.
