@@ -2,24 +2,29 @@
 
 A portfolio-grade performance testing project for a fintech-style payments API using k6 and JavaScript.
 
-## Goals
+## Project Purpose
 
-- strengthen portfolio quality
-- improve performance testing knowledge
-- improve JavaScript fluency through k6 scripting
-- build a structured, engineering-focused project
-- grow toward SDET-level thinking
+This project demonstrates how to design, run, and interpret performance tests for a payments API using k6.
 
-## Planned Coverage
+It focuses on:
 
 - payment creation performance
-- payment status lookup performance
-- refund performance
-- smoke, load, spike, and stress tests
-- thresholds and result interpretation
-- Dockerized execution
-- CI integration
+- response time thresholds
+- error-rate thresholds
+- smoke, load, spike, and stress behavior
+- result interpretation
+- SDET-style project structure
 
-## Status
+## Tech Stack
 
-Phase 1: project design and foundation
+- JavaScript
+- k6
+- Node.js
+- Express
+- Docker planned
+- GitHub Actions planned
+
+## Target Endpoint
+
+```http
+POST /payments
