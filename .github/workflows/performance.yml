@@ -19,6 +19,9 @@ jobs:
 
       - name: Build Docker images
         run: docker compose build
+        
+      - name: Prepare results directories
+        run: mkdir -p results/json results/summaries
 
       - name: Run k6 smoke test
         run: docker compose up --abort-on-container-exit --exit-code-from k6
