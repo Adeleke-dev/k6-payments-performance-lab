@@ -1,0 +1,9 @@
+FROM grafana/k6:latest
+
+WORKDIR /app
+
+COPY config ./config
+COPY scripts ./scripts
+COPY src ./src
+
+ENTRYPOINT ["k6"]

@@ -20,9 +20,10 @@ app.post('/payments', async (req, res) => {
   const simulatedDelay = Math.floor(Math.random() * 400) + 50;
   await sleep(simulatedDelay);
 
+  const failureRate = Number(process.env.FAILURE_RATE ?? 0);
   const randomFailureChance = Math.random();
 
-  if (randomFailureChance < 0.05) {
+  if (randomFailureChance < failureRate) {
     return res.status(500).json({
       error: 'Internal server error',
       code: 'INTERNAL_ERROR',

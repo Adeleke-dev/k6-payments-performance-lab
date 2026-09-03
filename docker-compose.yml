@@ -1,0 +1,39 @@
+services:
+  payment-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      FAILURE_RATE: 0
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:3000').then(() => process.exit(0)).catch(() => process.exit(1))"
+        ]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+      start_period: 2s
+
+  k6:
+    build:
+      context: .
+      dockerfile: Dockerfile.k6
+    user: "${UID:-1000}:${GID:-1000}"
+    depends_on:
+      payment-api:
+        condition: service_healthy
+    environment:
+      BASE_URL: http://payment-api:3000
+    volumes:
+      - ./results:/app/results
+    command:
+      - run
+      - --out
+      - json=/app/results/json/${K6_RESULT:-smoke}.json
+      - ${K6_SCRIPT:-scripts/payment-smoke.js}
